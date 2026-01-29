@@ -12,7 +12,7 @@ core/step6c_run_gromacs.py  (Step6C - PREPARE ONLY)
   md/<mol>/r<k>/01_param/posre.itp
   md/<mol>/r<k>/01_param/ligand_moltype.txt
 
-关键修复点（针对你遇到的失败模式）：
+修复点：
 1) ACPYPE 参数化增加 CHARGE sweep（避免 odd electrons / sqm 失败导致 10/15 jobs 失败）；
    - 默认尝试：CHARGE(用户给定) + [0, 1, -1, 2, -2, 3, -3]
    - 可通过环境变量 CHARGE_LIST 覆盖，例如：CHARGE_LIST="0 1 -1"
