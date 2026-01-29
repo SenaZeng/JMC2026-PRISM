@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+    Author PRISM developers
+    Description PRISM container recipe (Steps 1–5 + MD analysis utilities)
+    Version 0.1.0
+
+%post
+    apt-get update && apt-get install -y --no-install-recommends \
+        python3 python3-pip python3-venv \
+        git wget curl ca-certificates \
+        && rm -rf /var/lib/apt/lists/*
+
+    pip3 install --no-cache-dir \
+        numpy pandas scipy scikit-learn tqdm pyyaml matplotlib \
+        rdkit-pypi MDAnalysis typer
+
+%runscript
+    echo "PRISM container is ready."
+    echo "Example: python3 core/step1.py --help"
+    exec "$@"
