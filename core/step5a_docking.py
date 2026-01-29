@@ -2,18 +2,17 @@
 """
 Step 5A (Patched - Ranking Friendly, No Tier Dependency)
 --------------------------------------------------------
-功能（保持与原版一致）：
+功能：
 - 从 step4c_master_summary.csv 中选 Top N 分子（默认按 R_global 优先）
 - 对每个分子对接到多种冠状病毒 Mpro
 - 解析每个靶点结合能，计算 Broad_Spectrum_Score
 - 输出 step5a_broadspectrum_docking.csv
 - 额外：在输出 CSV 中加入 Broad_Rank / Broad_Rank_Pct（按 Broad_Spectrum_Score 排名）
 
-本补丁的关键改动：
-1) Broad_Spectrum_Score 计算更“诚实”：对所有靶点的有效数值都计入最差靶点（max），不再用 score<-0.1 的过滤。
+关键改动：
+1) Broad_Spectrum_Score ：对所有靶点的有效数值都计入最差靶点（max）。
 2) 输出自带排名列，便于 Step5B 直接按排名取 TopK，避免阈值分级导致“全灭”。
 
-说明：本脚本不使用 Gold/Silver/Bronze；排名逻辑由分数自然给出 Top1/TopK。
 """
 
 import os
@@ -64,7 +63,7 @@ TARGET_CONFIG: Dict[str, Dict[str, Any]] = {
 #
 # 你可以把它理解为：**不针对某一批分子调参**，而是固化“跨批次都成立”的结构常识。
 #
-# 参数含义（大白话）：
+# 参数含义：
 # - pool:         先从排序结果里取前 pool 个作为候选池（pool 越大，越不容易因为 ADMET/闸门过滤后不够 100 个）
 # - mw_min:       分子别太小；太小往往锚点不够、对接不稳（你这里经验上 260 是个安全下限）
 # - tpsa_min:     极性/氢键表面积下限；太低常见“抓不住口袋” → broad 尾巴（你已经验证 TPSA>=35 能显著剪尾巴）
