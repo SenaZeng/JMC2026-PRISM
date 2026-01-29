@@ -30,12 +30,20 @@ def main() -> int:
 
     steps = [core_dir / f"step{i}.py" for i in range(1, 2)]
     
-    missing = [p for p in steps if not p.exists()]
-    if missing:
-        print("[FAIL] Missing step files:")
-        for p in missing:
-            print(f"  - {p}")
+        # Auto-detect scripts under core/ to avoid hardcoded filenames like core/step1.py.
+    steps = sorted(core_dir.glob("step*.py"))
+    if not steps:
+        steps = sorted(p for p in core_dir.glob("*.py") if p.name != "__init__.py")
+
+    if not steps:
+        print("[FAIL] No Python scripts found under core/.")
         return 1
+
+    print("[INFO] Detected core scripts:")
+    for p in steps:
+        print(f"  - {p.name}")
+
+    
 
     python_exe = sys.executable or "python"
     failures = 0
