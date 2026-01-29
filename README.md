@@ -1,47 +1,34 @@
-PRISM (JMC2026) – Code and Environment for Broad-Spectrum Coronavirus Mpro Inhibitor Design
+# PRISM (JMC2026) — Containerized Workflow for Broad-Spectrum Coronavirus Mpro Inhibitor Discovery
 
-This repository provides representative code and environment specifications supporting the PRISM workflow described in our Journal of Medicinal Chemistry (JMC) submission.
+PRISM is a modular AI + physics pipeline for de novo molecular design and multi-target screening of coronavirus main protease (Mpro) inhibitors. To support computational reproducibility, PRISM is distributed as a containerized workflow (Singularity/Apptainer) covering Steps 1–5, with consistent post-processing and scoring utilities for MD trajectories (Step 6 analysis).
 
-Scope
-- Fragment-based molecular generation (FRATTVAE wrapper)
-- Surrogate-guided activity prediction (Uni-Mol representation + RandomForest regressor)
-- Auxiliary safety filtering (hERG liability classifier; RandomForest + Morgan fingerprints)
-- Physics-informed re-ranking (xTB/DFT descriptors; PySCF refinement)
-- Multi-target docking (SARS-CoV-2 / SARS-CoV-1 / MERS Mpro) with worst-case scoring
-- Molecular dynamics automation and analysis (QC gate, RMSD/Rg/mindist/H-bonds, composite robustness score)
+## Repository structure
+- core/                Step 1–Step 6 Python entry scripts (step1.py ... step6.py)
+- apptainer/           (to be added) Apptainer/Singularity definition + build/run helpers
+- conda/               (to be added) Lightweight environment for quick inspection/partial runs
+- examples/            (to be added) Minimal runnable examples (small inputs + smoke test)
+- docs/                (optional) Additional documentation
 
-Repository Structure
-- core/               Core workflow scripts (Step1–Step6)
-- env/                Environment files (conda/pip)
-- data/README.md       Data provenance and how to obtain public datasets
-- results/README.md    Output file schema and example column definitions
-- docs/               Optional: additional notes for reproducibility
+## Pipeline overview (Steps 1–6)
+1) Structure–Semantic Generation (Steps 1–2): fragment-based molecular assembly and latent-space optimization.
+2) Surrogate and Electronic Screening (Steps 3–4): Uni-Mol–guided prioritization and multi-fidelity electronic-structure screening.
+3) Multi-Target Docking (Step 5): automated receptor preparation and broad-spectrum docking analysis (SARS-CoV-2 / SARS-CoV-1 / MERS Mpro).
+4) Molecular Dynamics (Step 6): production MD runs executed in a site-installed GROMACS environment (HPC). Trajectory post-processing scripts, MDAnalysis workflows, and uncertainty-aware PRISM scoring are provided here to enable reproducible analysis when applied to resulting trajectories.
 
-Quick Start (minimal)
-1) Create environment
-   - conda env create -f env/environment.yml
-   - conda activate [ENV_NAME]
+## Quick start (lightweight Conda; partial execution)
+(Placeholder — will be finalized after conda/environment.yml is added)
+- Create env: conda env create -f conda/environment.yml
+- Activate:   conda activate prism
+- Run:        python core/step1.py --help
 
-2) Run representative workflow steps (examples; adjust paths as needed)
-   - Step1: generation
-     python core/step1_vae.py
-   - Step2: surrogate model (train or load)
-     python core/step2_surrogate.py
-   - Step2b: hERG model (optional; trains from public dataset)
-     python core/step2b_train_herg_model.py
-   - Step4–6: see core/README.md for step-specific commands and I/O
+## Quick start (Apptainer/Singularity; full Steps 1–5 + MD analysis tools)
+(Placeholder — will be finalized after apptainer/PRISM.def is added)
+- Build:      apptainer build prism.sif apptainer/PRISM.def
+- Run:        apptainer exec prism.sif python core/step1.py --help
 
-Reproducibility Notes
-- HPC-specific job scheduling scripts and large intermediate artifacts (e.g., full MD trajectories) are not included.
-- All algorithmic steps, parameter choices, and decision criteria are documented in the manuscript Methods and Supporting Information.
+## Reproducibility note
+Steps 1–5 are designed to run inside the container for consistent dependencies. Step 6 production MD requires HPC resources and was executed using a site-installed GROMACS environment. However, the analysis layer (trajectory post-processing, MDAnalysis workflows, and PRISM scoring/robustness metrics) is included, so prioritization criteria are reproducible when the same analysis is applied to the resulting trajectories.
 
-Data Availability
-- Bioactivity datasets for surrogate and hERG models are from public sources (see data/README.md).
-- Protein structures were retrieved from the Protein Data Bank (PDB). PDB IDs used: [LIST_PDBS].
-
-License
-[MIT / Apache-2.0 / TBD]
-
-Contact
-For questions related to reproduction of the workflow, please contact: [YOUR_EMAIL or omit]
-
+## Citation
+Source code and container recipes: https://github.com/SenaZeng/JMC2026-PRISM
+A versioned snapshot for the study will be archived on Zenodo (DOI to be assigned upon acceptance).
