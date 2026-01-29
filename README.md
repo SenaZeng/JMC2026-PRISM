@@ -20,6 +20,8 @@ PRISM is a modular AI + physics pipeline for de novo molecular design and multi-
 - Citation: see CITATION.cff (Zenodo DOI will be added upon acceptance).
 - License: MIT (see LICENSE).
 - Releases: see CHANGELOG.md and RELEASE_CHECKLIST.md for versioned snapshots.
+- Reproducibility note: see docs/REPRODUCIBILITY.md.
+
 
 
 ## Quick start (lightweight Conda; partial execution)
