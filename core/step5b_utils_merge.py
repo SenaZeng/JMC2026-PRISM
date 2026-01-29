@@ -2,15 +2,13 @@
 """
 Step5B (Patched - Ranking Only)
 --------------------------------
-目标：不再使用 Gold/Silver/Bronze 分级（避免阈值导致“全灭/输出为空”）。
-
-改为：
+目标：
 1) 将 Step4C master 与 Step5A docking 按 canonical SMILES 合并；
 2) 对有 docking 分数的行，按 Broad_Spectrum_Score（越负越好）排序并生成 Docking_Rank / Docking_Rank_Pct；
 3) 输出 master summary（含排名列）；
 4) 输出 final candidates：默认取 docking 排名 TopK（保证至少有 Top1）；若没有任何 docking 分数，则回退按上游综合分数排序取 TopK（也保证不为空）。
 
-默认路径保持不变，兼容你原有 pipeline：
+默认路径保持不变，兼容原有 pipeline：
 - Step4C master:  results/step4c_master_summary.csv
 - Step5A docking: results/step5a_broadspectrum_docking.csv
 - out master:      results/step5b_master_summary.csv
