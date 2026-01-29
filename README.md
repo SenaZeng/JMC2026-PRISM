@@ -15,11 +15,16 @@ PRISM is a modular AI + physics pipeline for de novo molecular design and multi-
 3) Multi-Target Docking (Step 5): automated receptor preparation and broad-spectrum docking analysis (SARS-CoV-2 / SARS-CoV-1 / MERS Mpro).
 4) Molecular Dynamics (Step 6): production MD runs executed in a site-installed GROMACS environment (HPC). Trajectory post-processing scripts, MDAnalysis workflows, and uncertainty-aware PRISM scoring are provided here to enable reproducible analysis when applied to resulting trajectories.
 
+
 ## Quick start (lightweight Conda; partial execution)
-(Placeholder — will be finalized after conda/environment.yml is added)
-- Create env: conda env create -f conda/environment.yml
-- Activate:   conda activate prism
-- Run:        python core/step1.py --help
+1) Create env:
+   conda env create -f conda/environment.yml
+2) Activate:
+   conda activate prism
+3) Run the first test:
+   python examples/first_test.py
+
+Note: this Conda environment is intended for rapid inspection and partial execution. Full dependency coverage for Steps 1–5 will be provided via the container recipe.
 
 ## Quick start (Apptainer/Singularity; full Steps 1–5 + MD analysis tools)
 (Placeholder — will be finalized after apptainer/PRISM.def is added)
