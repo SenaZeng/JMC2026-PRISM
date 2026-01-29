@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.0] - 2026-01-29
+## [v0.1.0] - 2026-01-29
 ### Added
 - Core PRISM step scripts under core/ (Steps 1–6 modules).
 - Lightweight Conda environment (conda/environment.yml).
