@@ -213,6 +213,10 @@ trajectories/
 outputs/
 logs/
 
+# Local config (do not commit)
+config/config.yaml
+
+
 GROMACS / MD trajectories
 *.xtc
 *.trr
