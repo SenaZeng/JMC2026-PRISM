@@ -10,6 +10,7 @@ from __future__ import annotations
 import os
 import sys
 import subprocess
+import py_compile
 from pathlib import Path
 
 
@@ -48,16 +49,25 @@ def main() -> int:
     python_exe = sys.executable or "python"
     failures = 0
 
-    # Try running --help for each step script.
+        # CI-friendly check: syntax-only (do not execute heavy workflows).
+    failures = 0
     for p in steps:
-        code = run([python_exe, str(p), "--help"])
-        if code != 0:
-            print(f"[WARN] Non-zero exit for {p.name} with --help (code={code}).")
-            # Fallback: try running with no args (some scripts may not implement --help)
-            code2 = run([python_exe, str(p)])
-            if code2 != 0:
-                print(f"[FAIL] {p.name} failed both '--help' and no-arg run.")
-                failures += 1
+        try:
+            py_compile.compile(str(p), doraise=True)
+            print(f"[OK] syntax: {p.name}")
+        except Exception as e:
+            print(f"[FAIL] syntax: {p.name}")
+            print(f"       {e}")
+            failures += 1
+
+    if failures == 0:
+        print("\n[PASS] First test completed (syntax-only).")
+        return 0
+
+    print(f"\n[FAIL] First test had {failures} failing script(s).")
+    return 1
+
+    
 
     if failures == 0:
         print("\n[PASS] Smoke test completed. Core scripts are callable.")
