@@ -205,3 +205,33 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+PRISM / computational artifacts
+results/
+md/
+trajectories/
+outputs/
+logs/
+
+GROMACS / MD trajectories
+*.xtc
+*.trr
+*.tng
+*.edr
+*.cpt
+*.gro
+*.top
+
+Docking / chemistry bulk files
+*.sdf
+*.mol2
+*.pdbqt
+
+Container images
+*.sif
+
+Large archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
