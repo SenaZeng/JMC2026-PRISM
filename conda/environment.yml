@@ -1,0 +1,17 @@
+name: prism
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - tqdm
+  - pyyaml
+  - matplotlib
+  - rdkit
+  - mdanalysis
+  - pip:
+      - typer
