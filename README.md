@@ -29,6 +29,9 @@ PRISM is a modular AI + physics pipeline for de novo molecular design and multi-
    conda activate prism
 3) Run the first test:
    python examples/first_test.py
+   Configuration:
+- See config/config.template.yaml and config/README.md for site-specific paths and external executables.
+
 
 Note: this Conda environment is intended for rapid inspection and partial execution. Full dependency coverage for Steps 1–5 will be provided via the container recipe.
 
