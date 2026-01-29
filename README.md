@@ -27,9 +27,13 @@ PRISM is a modular AI + physics pipeline for de novo molecular design and multi-
 Note: this Conda environment is intended for rapid inspection and partial execution. Full dependency coverage for Steps 1–5 will be provided via the container recipe.
 
 ## Quick start (Apptainer/Singularity; full Steps 1–5 + MD analysis tools)
-(Placeholder — will be finalized after apptainer/PRISM.def is added)
-- Build:      apptainer build prism.sif apptainer/PRISM.def
-- Run:        apptainer exec prism.sif python core/step1.py --help
+1) Build the container image:
+   bash apptainer/build.sh
+2) Run commands inside the container:
+   bash apptainer/run.sh python3 core/step1.py --help
+
+Example (run the first test inside the container):
+   bash apptainer/run.sh python3 examples/first_test.py
 
 ## Reproducibility note
 Steps 1–5 are designed to run inside the container for consistent dependencies. Step 6 production MD requires HPC resources and was executed using a site-installed GROMACS environment. However, the analysis layer (trajectory post-processing, MDAnalysis workflows, and PRISM scoring/robustness metrics) is included, so prioritization criteria are reproducible when the same analysis is applied to the resulting trajectories.
