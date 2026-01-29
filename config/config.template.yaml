@@ -1,0 +1,26 @@
+# PRISM configuration template
+# Copy to: config/config.yaml (do not commit config.yaml if it contains local paths)
+
+paths:
+  # Root working directory for outputs (recommended to be outside the repo for large files)
+  workdir: "./outputs"
+
+  # Optional: data/model directories (fill in if your steps require them)
+  models_dir: ""
+  datasets_dir: ""
+
+executables:
+  # Optional external tools (fill in if used by your pipeline)
+  gromacs_gmx: "gmx"
+  xtb: "xtb"
+  apptainer: "apptainer"
+
+docking:
+  # Optional docking engine settings
+  engine: ""
+  receptors_dir: ""
+  ligands_dir: ""
+
+notes:
+  # Free text for site-specific notes
+  site: ""
