@@ -5,6 +5,9 @@
 - [ ] README Quick start commands are up to date.
 - [ ] CITATION.cff author list and metadata are correct.
 - [ ] Version number is decided (e.g., v1.0.0) and matches CHANGELOG.
+- [ ] - [ ] CITATION.cff authors are real names (no placeholders) and ordered correctly.
+- [ ] README Citation section points to the intended release tag (e.g., v0.1.0).
+
 
 ## Create GitHub Release
 - [ ] Create a tag (e.g., v1.0.0) on main.
