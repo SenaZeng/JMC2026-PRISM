@@ -1,0 +1,12 @@
+# Reproducibility
+
+PRISM is distributed as a containerized workflow leveraging Singularity/Apptainer to support computational reproducibility. Dependencies are organized to mirror the modular execution of the pipeline, covering de novo molecular design through physics-based screening (Steps 1–5).
+
+The container provides the complete software required for:
+1) Structure–Semantic Generation (Steps 1–2): fragment-based molecular assembly and latent-space optimization.
+2) Surrogate and Electronic Screening (Steps 3–4): Uni-Mol–guided prioritization and multi-fidelity electronic-structure screening.
+3) Multi-Target Docking (Step 5): automated receptor preparation and broad-spectrum docking analysis.
+
+Because production molecular dynamics (MD) simulations require HPC resources, Step 6 production runs are typically executed using a site-installed GROMACS environment. To maintain analytical consistency, all trajectory post-processing scripts, automated MDAnalysis workflows, and the uncertainty-aware PRISM scoring logic are included in this repository. Accordingly, the prioritization criteria and robustness metrics are reproducible when the same analysis workflow is applied to the resulting trajectories, even when production MD is executed outside the container.
+
+A versioned snapshot corresponding to this study is available as GitHub Release v0.1.0. A Zenodo archive (DOI) will be added upon acceptance.
