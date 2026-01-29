@@ -10,7 +10,7 @@ authors:
 repository-code: "https://github.com/SenaZeng/JMC2026-PRISM"
 url: "https://github.com/SenaZeng/JMC2026-PRISM"
 license: "MIT"
-version: "0.1.0"
+version: "v0.1.1"
 date-released: "2026-01-29"
 keywords:
   - "computational chemistry"
