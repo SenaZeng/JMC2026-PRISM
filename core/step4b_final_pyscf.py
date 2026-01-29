@@ -3,17 +3,17 @@
 """
 Step 4B: Parallel PySCF Calculation (Aligned + Top20 Strategy)
 --------------------------------------------------------------
-✅ 目标：在不改变项目现有 step4b_final_pyscf.py 的【参数命名 / 日志风格 / 输出列顺序 / 输出路径】前提下，
+目标：在不改变项目现有 step4b_final_pyscf.py 的【参数命名 / 日志风格 / 输出列顺序 / 输出路径】前提下，
 把 “Top20=10冲分+10保险（多样性）” 的选择策略内置进来。
 
 保持无感的点（与旧版一致）：
 - CLI 参数：--input_file / --output_file / --top_k / --workers（名字与默认值不变）
-- 日志输出：📥 / 🔍 / 🚀 / ⏳ / ✅ 的格式与语句保持一致
+- 日志输出：格式与语句保持一致
 - 输出文件名默认仍为：../results/step4b_top_molecules_pyscf.csv（Step4C 不需要改）
 - 输出列顺序规则仍为：把 ["smiles","PySCF_Gap_eV","PySCF_Dipole_Debye","R_global"] 放最前，其余列按原样追加
 
 变化点（“无感升级”）：
-- 仍然会做 Lipinski + hERG 的过滤（若列存在），但 TopK 的选择不再是“单一分数截断”：
+- 仍然会做 Lipinski + hERG 的过滤，但 TopK 的选择不再是“单一分数截断”：
   先构建 Candidate Pool（默认 200=100/50/50），再取 Exploitation/Exploration 组合，最后补齐到 top_k。
 """
 
