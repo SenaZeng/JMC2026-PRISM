@@ -1,0 +1,15 @@
+# Normalize line endings for text files
+* text=auto
+
+# Shell scripts must use LF
+*.sh text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Python files
+*.py text eol=lf
+
+# Markdown
+*.md text eol=lf
