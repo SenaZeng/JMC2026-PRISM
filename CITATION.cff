@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use PRISM in your research, please cite this software."
+title: "PRISM (JMC2026): Containerized Workflow for Broad-Spectrum Coronavirus Mpro Inhibitor Discovery"
+type: software
+authors:
+  - family-names: "REPLACE_WITH_FAMILY_NAME"
+    given-names: "REPLACE_WITH_GIVEN_NAME"
+repository-code: "https://github.com/SenaZeng/JMC2026-PRISM"
+url: "https://github.com/SenaZeng/JMC2026-PRISM"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-01-29"
+keywords:
+  - "computational chemistry"
+  - "drug discovery"
+  - "molecular docking"
+  - "molecular dynamics"
+  - "coronavirus"
+  - "Mpro"
+  - "Apptainer"
+  - "Singularity"
+notes: "A versioned snapshot corresponding to the study will be archived on Zenodo (DOI to be assigned upon acceptance)."
