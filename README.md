@@ -47,3 +47,10 @@ Steps 1–5 are designed to run inside the container for consistent dependencies
 ## Citation
 Source code and container recipes: https://github.com/SenaZeng/JMC2026-PRISM
 A versioned snapshot for the study will be archived on Zenodo (DOI to be assigned upon acceptance).
+If you use PRISM, please cite this repository via the GitHub “Cite this repository” panel (CITATION.cff).
+
+Versioned snapshot for this study:
+- GitHub Release: v0.1.0
+
+A Zenodo archive (DOI) will be added upon acceptance.
+
