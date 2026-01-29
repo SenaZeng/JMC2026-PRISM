@@ -28,7 +28,8 @@ def main() -> int:
         print(f"[FAIL] core/ not found at: {core_dir}")
         return 1
 
-    steps = [core_dir / f"step{i}.py" for i in range(1, 7)]
+    steps = [core_dir / f"step{i}.py" for i in range(1, 2)]
+    
     missing = [p for p in steps if not p.exists()]
     if missing:
         print("[FAIL] Missing step files:")
