@@ -15,6 +15,12 @@ PRISM is a modular AI + physics pipeline for de novo molecular design and multi-
 3) Multi-Target Docking (Step 5): automated receptor preparation and broad-spectrum docking analysis (SARS-CoV-2 / SARS-CoV-1 / MERS Mpro).
 4) Molecular Dynamics (Step 6): production MD runs executed in a site-installed GROMACS environment (HPC). Trajectory post-processing scripts, MDAnalysis workflows, and uncertainty-aware PRISM scoring are provided here to enable reproducible analysis when applied to resulting trajectories.
 
+## Project status
+- CI: GitHub Actions runs the minimal first test (syntax-only) on every push/PR.
+- Citation: see CITATION.cff (Zenodo DOI will be added upon acceptance).
+- License: MIT (see LICENSE).
+- Releases: see CHANGELOG.md and RELEASE_CHECKLIST.md for versioned snapshots.
+
 
 ## Quick start (lightweight Conda; partial execution)
 1) Create env:
