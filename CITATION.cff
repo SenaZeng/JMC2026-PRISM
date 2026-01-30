@@ -5,6 +5,8 @@ type: software
 authors:
   - family-names: "Wang"
     given-names: "Hongmei"
+  - family-names: "Zhang"
+    given-names: "Meiling"
   - family-names: "Zeng"
     given-names: "Sena"
 repository-code: "https://github.com/SenaZeng/JMC2026-PRISM"
